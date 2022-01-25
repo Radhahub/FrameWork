@@ -8,5 +8,6 @@ public class DemoGit
 public void demoGit()
 {
 	System.out.println("hii ");
+	System.out.println("this is my first commit");
 }
 }
