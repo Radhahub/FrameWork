@@ -1,6 +1,7 @@
 package Dataprovider;
 
 import java.io.FileInputStream;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,10 +20,10 @@ import com.crm.comcast_genericlibraries.WebDriverUtility;
 
 public class CreateOrgWithIndTy
 {
-	@Parameters("BROWSER")
+	//@Parameters("BROWSER")
 	
-	@BeforeClass
-	public void configBC(String BROWSER) 
+	//@BeforeClass
+	//public void configBC(String BROWSER) 
 	{
 		System.out.println("=============Launch the Browser=======");
 	}
@@ -30,7 +31,9 @@ public class CreateOrgWithIndTy
 	
 	public void CreateOrgWithIndTy() throws Throwable 
 	{
-	FileInputStream fis=new FileInputStream("./Data/excel.xls");	
+	FileInputStream fis=new FileInputStream("./Data/commonData.properties");
+	 Properties pobj=new Properties();
+	 pobj.load(fis);
 		JavaUtility jLib = new JavaUtility();
 		ExcelUtility eLib = new ExcelUtility();
 		FileUtility fLib = new FileUtility();
@@ -38,23 +41,23 @@ public class CreateOrgWithIndTy
 	
 	
 		WebDriver driver=null;
-		String BROWSER = fLib.readDatafromPropertyfile("browser");
-		String URL = fLib.readDatafromPropertyfile("url");
-		String USERNAME = fLib.readDatafromPropertyfile("username");
-		String PASSWORD = fLib.readDatafromPropertyfile("password");	
+		String BROWSER = pobj.getProperty("browser");
+		String URL = pobj.getProperty("url");
+		String USERNAME = pobj.getProperty("username");
+		String PASSWORD = pobj.getProperty("password");	
 		
-		if(BROWSER.equalsIgnoreCase("firefox"))
-		{
-			driver= new FirefoxDriver();
-		}
-		else if(BROWSER.equals("chrome"))
-		{
-			driver=new ChromeDriver();
-		}
-		else 
-		{
-			System.out.println("invalid browser");
-		}
+		if(BROWSER.equalsIgnoreCase("chrome"))
+ 		{
+ 			driver =new ChromeDriver();
+ 		}
+ 		else if(BROWSER.equalsIgnoreCase("firefox"))
+ 		{
+ 			driver=new FirefoxDriver();
+ 		}
+ 		else
+ 		{
+ 			System.out.println("invalid browser");
+ 		}
 	
 		wLib.maximizeWindow(driver);
 		wLib.waitForpageLoad(driver);
@@ -92,8 +95,8 @@ public class CreateOrgWithIndTy
 	}
 
 
-  @Parameters("BROWSER")
-@AfterClass
+//  @Parameters("BROWSER")
+//@AfterClass
 public void confgAC(String BROWSER) 
 {
 	System.out.println("=============Close the Browser=======");

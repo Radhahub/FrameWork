@@ -16,10 +16,10 @@ import Dataprovider.CreateOrgTest;
 
 public class CrossBrowser
 {
-	
+	@Test
 	@Parameters("BROWSER")
 	@BeforeClass
-	@Test
+
 	public void configBC(String BROWSER) throws InterruptedException 
 	{
 		System.out.println("=============Launch the Browser=======");

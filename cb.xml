@@ -5,6 +5,7 @@
    <parameter name="BROWSER" value="Chrome"/> 
     <classes>
        <class name="com.crm.Dataprovider.CreateOrgindustry"/>
+       <class name="com.crm.Dataprovider.CreateOrgTest"/>
       
 
     </classes>
@@ -14,6 +15,8 @@
   <parameter name="BROWSER" value="Firefox"/> 
     <classes>
     <class name="com.crm.Dataprovider.CreateOrgindustry"/>
+        <class name="com.crm.Dataprovider.CreateOrgTest"/>
+      
       
     </classes>
   </test> <!-- Test -->
